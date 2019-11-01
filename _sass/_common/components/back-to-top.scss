@@ -17,12 +17,12 @@
     transition-property: bottom;
     @include the-transition();
 
-    @include mobile() {
-      display: none;
-    }
-    @include tablet() {
-      display: none;
-    }
+    // @include mobile() {
+    //   display: none;
+    // }
+    // @include tablet() {
+    //   display: none;
+    // }
 
     &.back-to-top-on {
       bottom: $b2t-position-bottom-on;
