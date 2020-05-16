@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: He.Chun's Blog
+title: Ho.Chun's Blog
 subtitle: 沒一個努力會是白費的
 description: 紀錄 & 整理
-author: He.Chun
+author: Ho.Chun
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zh-tw
 date_format: '%Y-%m-%d'
@@ -217,7 +217,7 @@ font:
 social:
   GitHub: https://github.com/hochun836/
   Facebook: https://www.facebook.com/peter.kang.374
-  Instagram: https://www.instagram.com/he.chun.123/
+  Instagram: https://www.instagram.com/hochun836/
   FoanaScuba: http://foanascuba.com
 
 # Social Links Icons
