@@ -1,5 +1,5 @@
 ---
-date: 2020-10-02
+date: 2020-10-03
 title: "[Python] import 概念"
 description: import 看似簡單卻大有玄機，但弄懂流程其實也不難
 permalink: /:year/:month/:day/python/import-concept.html
@@ -178,7 +178,7 @@ packageA: <module 'packageA' from 'D:\\hochun\\example\\python_absolute_import\\
 2. 發現沒有，所以依據 import 的方式來收尋 `packageA.py` / `packageB.py` / `moduleB.py` 的檔案位置
 3. 此處用的是絕對路徑，所以會利用 `sys.path` 來尋找檔案位置
 4. 有看到 `sys.path[0]` 就是根目錄嗎 ? 就是因為這個路徑，才找的到 `packageA.py` / `packageB.py` / `moduleB.py`
-5. 如果在 `sys.path` 中都找不到的話，就會出現 `ImportError`
+5. 如果在 `sys.path` 中都找不到的話，就會出現 `ModuleNotFoundError`
 
 - `from packageA import moduleA`
 1. 由於 `packageA` 已存在於 `sys.modules`，所以不會執行 `packageA.py`
@@ -198,6 +198,7 @@ packageA: <module 'packageA' from 'D:\\hochun\\example\\python_absolute_import\\
 執行 `D:\hochun\example\python_absolute_import>python app2.py`
 
 ```python
+# app2.py
 print('& app2.py')
 
 print('dir():', dir())
@@ -452,12 +453,180 @@ ImportError: cannot import name 'lastName' from partially initialized module 'ap
 - [進階練習 2](#進階練習-2)
 - [進階練習 3](#進階練習-3)
 
+```python
+# 檔案結構
+python_relative_import
+│
+├─level1
+│  │  __init__.py
+│  │
+│  ├─level2
+│  │  │  app1.py
+│  │  │  app2.py
+│  │  │  __init__.py
+│  │  │
+│  │  ├─level3
+│  │  │      app3.py
+│  │  │      __init__.py
+│  │  │
+│  │  └─utils
+│  │          tool.py
+│  │          __init__.py
+│  │
+│  └─utils
+│          tool.py
+│          __init__.py
+│
+└─utils
+        tool.py
+        __init__.py
+```
+
+```python
+# utils/__init__.py
+print('& [utils] __init__.py')
+
+# utils/tool.py
+print('& [utils] tool.py')
+name = 'chen'
+
+# level1/__init__.py
+print('& [level1] __init__.py')
+
+# level1/utils/__init__.py
+print('& [level1/utils] __init__.py')
+
+# level1/utils/tool.py
+print('& [level1/utils] tool.py')
+name = 'bob'
+
+# level1/level2/__init__.py
+print('& [level1/level2] __init__.py')
+
+# level1/level2/utils/__init__.py
+print('& [level1/level2/utils] __init__.py')
+
+# level1/level2/utils/tool.py
+print('& [level1/level2/utils] tool.py')
+name = 'peter'
+
+# level1/level2/level3/__init__.py
+print('& [level1/level2/level3] __init__.py')
+```
+
 <br>
 
+## 進階練習 1
 
+執行 `D:\hochun\example\python_relative_import\level1\level2>python app1.py`
+
+```python
+# app1.py
+print('& [level1/level2] app1.py')
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+import sys
+sys.path.append('../..') # 增加新的 path
+sys.path = sys.path[1:] # 刪除 sys.path[0]
+
+from utils.tool import name
+print(name)
+```
+
+輸出
+
+```python
+& [level1/level2] app1.py
+__name__: __main__
+__package__: None
+& [utils] __init__.py
+& [utils] tool.py
+chen # in utils/tool.py
+```
+
+觀察
+
+1. 當下路徑為 `D:\hochun\example\python_relative_import\level1\level2`
+2. `sys.path.append('../..')`，增加**上上層路徑**到 `sys.path`
+3. `sys.path = sys.path[1:]`，刪除 `sys.path[0]` **(當層路徑)**
+
+坑
+
+1. 這個範例其實還是**絕對路徑**，所以找尋 module 會利用 `sys.path`
+2. 若改為執行 `D:\hochun\example\python_relative_import>python level1/level2/app1.py`，則會報錯 `ModuleNotFoundError: No module named 'utils'`，因為我們修改了 `sys.path`，進而造成在 `sys.path` 中找不到 module `utils`，所以才會報錯
+
+<br>
+
+## 進階練習 2
+
+執行 `D:\hochun\example\python_relative_import\level1\level2>python app2.py`
+
+```python
+# app2.py
+print('& [level1/level2] app2.py')
+
+import sys
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+from ..utils import tool # 相對路徑
+```
+
+輸出
+
+```python
+& [level1/level2] app2.py
+__name__: __main__ # 關鍵
+__package__: None # 關鍵
+Traceback (most recent call last):
+  File "app2.py", line 8, in <module>
+    from ..utils import tool
+ImportError: attempted relative import with no known parent package
+```
+
+觀察
+
+1. 執行 `D:\hochun\example\python_relative_import\level1\level2>python app1.py`
+2. `print('__name__:', __name__)` 為 `__main__`
+3. `print('__package__:', __package__)` 為 `None`
+4. `from ..utils import tool` 為 import 方式的**相對路徑**
+
+坑
+
+1. 若 import 方式為**相對路徑**，則利用的不是 `sys.path`，而是 `__name__` / `__package__`
+2. 因為 `__package__` 為 `None`，這被視為**最上層路徑**，所以無法再用 `from ..utils import tool`，即便改成 `from .utils import tool` 也一樣會報錯
+3. 換句話說，若 module 中有寫到相對路徑，則不能直接下 `python` 指令去 run 該程式，除非使用 `python -m` (如下)
+
+    `D:\hochun\example\python_relative_import>python -m level1.level2.app2`
+
+<br>
+
+## 進階練習 3
+
+```python
+# app3.py
+print('& [level1/level2/level3] app3.py')
+
+import sys
+
+print('__name__:', __name__)
+print('__package__:', __package__)
+
+from ...utils.tool import name
+
+print(name)
+```
+
+最後這個練習就讓大家動手玩玩看囉
 
 <br>
 
 # 參考文章
+
+1. https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3
+2. https://carsonwah.github.io/15213187969322.html
 
 <br>
