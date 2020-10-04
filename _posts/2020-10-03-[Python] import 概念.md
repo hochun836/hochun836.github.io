@@ -447,10 +447,11 @@ ImportError: cannot import name 'lastName' from partially initialized module 'ap
 
 複習下，在[import 流程](#import-流程)中有提到，雖然 import 的**方式**有兩種，但是 import 的**流程**是相同的  
 前面學習完了 import 的流程與 import 方式之一的**絕對路徑**  
-接下來，讓我們把**相對路徑**也一併搞定吧! (<a href="https://github.com/hochun836/python_relative_import" target="_blank">範例下載</a>)
+接下來，讓我們把**相對路徑**也一併搞定吧 ! (<a href="https://github.com/hochun836/python_relative_import" target="_blank">範例下載</a>)
 
 - [進階練習 1](#進階練習-1)
-- [進階練習 2](#進階練習-2)
+- [進階練習 2-1](#進階練習-2-1)
+- [進階練習 2-2](#進階練習-2-2)
 - [進階練習 3](#進階練習-3)
 
 ```python
@@ -559,7 +560,7 @@ chen # in utils/tool.py
 
 <br>
 
-## 進階練習 2
+## 進階練習 2-1
 
 執行 `D:\hochun\example\python_relative_import\level1\level2>python app2.py`
 
@@ -589,9 +590,9 @@ ImportError: attempted relative import with no known parent package
 
 觀察
 
-1. 執行 `D:\hochun\example\python_relative_import\level1\level2>python app1.py`
-2. `print('__name__:', __name__)` 為 `__main__`
-3. `print('__package__:', __package__)` 為 `None`
+1. 當下路徑為 `D:\hochun\example\python_relative_import\level1\level2`
+2. `__name__` 為 `__main__`
+3. `__package__` 為 `None`
 4. `from ..utils import tool` 為 import 方式的**相對路徑**
 
 坑
@@ -600,7 +601,32 @@ ImportError: attempted relative import with no known parent package
 2. 因為 `__package__` 為 `None`，這被視為**最上層路徑**，所以無法再用 `from ..utils import tool`，即便改成 `from .utils import tool` 也一樣會報錯
 3. 換句話說，若 module 中有寫到相對路徑，則不能直接下 `python` 指令去 run 該程式，除非使用 `python -m` (如下)
 
-    `D:\hochun\example\python_relative_import>python -m level1.level2.app2`
+## 進階練習 2-2
+
+執行 `D:\hochun\example\python_relative_import>python -m level1.level2.app2`
+
+輸出
+
+```python
+& [level1] __init__.py
+& [level1/level2] __init__.py
+& [level1/level2] app2.py
+__name__: __main__
+__package__: level1.level2 # 關鍵，不是 None 了
+& [level1/utils] __init__.py
+& [level1/utils] tool.py
+```
+
+觀察
+
+1. 當下路徑為 `D:\hochun\example\python_relative_import`
+2. `python -m` 後面跟的是 `level1.level2.app2` 而非 `level1/level2/app2.py`
+3. `__package__` 為 `level1.level2`，因為如此 import 方式為**相對路徑**才能做到**相對**的作用
+
+經由上述解釋後，現在的你應該能說出以下兩者的差異吧 !
+
+1. `D:\hochun\example\python_relative_import>python -m level1.level2.app2`
+2. `D:\hochun\example\python_relative_import>python level1/level2/app2.py`
 
 <br>
 
