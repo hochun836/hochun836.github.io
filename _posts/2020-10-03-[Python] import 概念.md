@@ -601,6 +601,8 @@ ImportError: attempted relative import with no known parent package
 2. 因為 `__package__` 為 `None`，這被視為**最上層路徑**，所以無法再用 `from ..utils import tool`，即便改成 `from .utils import tool` 也一樣會報錯
 3. 換句話說，若 module 中有寫到相對路徑，則不能直接下 `python` 指令去 run 該程式，除非使用 `python -m` (如下)
 
+<br>
+
 ## 進階練習 2-2
 
 執行 `D:\hochun\example\python_relative_import>python -m level1.level2.app2`
