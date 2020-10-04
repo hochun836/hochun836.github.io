@@ -623,7 +623,7 @@ __package__: level1.level2 # 關鍵，不是 None 了
 
 1. 當下路徑為 `D:\hochun\example\python_relative_import`
 2. `python -m` 後面跟的是 `level1.level2.app2` 而非 `level1/level2/app2.py`
-3. `__package__` 為 `level1.level2`，因為如此 import 方式為**相對路徑**才能做到**相對**的作用
+3. `__package__` 為 `level1.level2`，因為如此 import 方式的**相對路徑**才能做到**相對**的作用
 
 經由上述解釋後，現在的你應該能說出以下兩者的差異吧 !
 
