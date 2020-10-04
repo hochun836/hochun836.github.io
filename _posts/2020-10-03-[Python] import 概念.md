@@ -20,7 +20,7 @@ tags:
 - module (模塊) : 檔案
 - import 的方式有兩種 : 絕對路徑 / 相對路徑
 - sys.modules : 是個 dictionary，用於存放已經 import 過的 modules
-- sys.path : 是個 list，用於收尋 import module 的各種路徑
+- sys.path : 是個 list，用於搜尋 import module 的各種路徑
 
 <br>
 
@@ -33,7 +33,7 @@ tags:
 
 1. 檢查 `xxxModule` 是否存在於 `sys.modules`
 2. 若存在，則直接從 `sys.modules` 取出使用即可
-3. 若不存在，則依據 import 的**方式**來收尋 `xxxModule.py` 的檔案位置
+3. 若不存在，則依據 import 的**方式**來搜尋 `xxxModule.py` 的檔案位置
 4. 接著生成 `xxxModule`
 5. 再來放入 `sys.modules`
 6. 最後執行 `xxxModule.py` 裡面的 source code (以剛生成的 `xxxModule` 作為 scope 來執行)
@@ -175,14 +175,14 @@ packageA: <module 'packageA' from 'D:\\hochun\\example\\python_absolute_import\\
 
 - `from packageA.packageB import moduleB`
 1. 檢查 `packageA` / `packageB` / `moduleB` 是否存在於 `sys.modules`
-2. 發現沒有，所以依據 import 的方式來收尋 `packageA.py` / `packageB.py` / `moduleB.py` 的檔案位置
+2. 發現沒有，所以依據 import 的方式來搜尋 `packageA.py` / `packageB.py` / `moduleB.py` 的檔案位置
 3. 此處用的是絕對路徑，所以會利用 `sys.path` 來尋找檔案位置
 4. 有看到 `sys.path[0]` 就是根目錄嗎 ? 就是因為這個路徑，才找的到 `packageA.py` / `packageB.py` / `moduleB.py`
 5. 如果在 `sys.path` 中都找不到的話，就會出現 `ModuleNotFoundError`
 
 - `from packageA import moduleA`
 1. 由於 `packageA` 已存在於 `sys.modules`，所以不會執行 `packageA.py`
-2. 但是 `moduleA` 還不存在於 `sys.modules`，所以會依據 import 的方式來收尋 `moduleA.py` 的檔案位置
+2. 但是 `moduleA` 還不存在於 `sys.modules`，所以會依據 import 的方式來搜尋 `moduleA.py` 的檔案位置
 3. 此處用的是絕對路徑，所以會利用 `sys.path` 來尋找檔案位置
 
 - `import packageA`
@@ -555,7 +555,7 @@ chen # in utils/tool.py
 
 坑
 
-1. 這個範例其實還是**絕對路徑**，所以找尋 module 會利用 `sys.path`
+1. 這個範例其實還是**絕對路徑**，所以尋找 module 會利用 `sys.path`
 2. 若改為執行 `D:\hochun\example\python_relative_import>python level1/level2/app1.py`，則會報錯 `ModuleNotFoundError: No module named 'utils'`，因為我們修改了 `sys.path`，進而造成在 `sys.path` 中找不到 module `utils`，所以才會報錯
 
 <br>
