@@ -6,10 +6,16 @@
     color: blue;
   }
 
-  & .highlight .code pre {
-    @media (max-width: 767px) {
+  @media (max-width: 767px) {
+    & .highlight .code pre {
       padding-top: 10px;
       padding-bottom: 10px;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .github-corner {
+    display: none;
   }
 }
