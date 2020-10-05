@@ -9,7 +9,13 @@ git clone https://github.com/hochun836/hochun836.github.io.git
 cd hochun836.github.io
 ```
 
-install `ruby >= 2.1.0` (recommend by `rvm`)
+install `ruby >= 2.4.0` (recommend by `rvm`)
+
+```sh
+rvm get master
+
+rvm install 2.4.0
+```
 
 install `bundler`
 
