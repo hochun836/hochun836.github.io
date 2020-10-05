@@ -5,4 +5,11 @@
   & a {
     color: blue;
   }
+
+  & .highlight .code pre {
+    @media (max-width: 767px) {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
 }
