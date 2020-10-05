@@ -19,3 +19,10 @@
     display: none;
   }
 }
+
+// TODO: for IOS bug
+@supports (-webkit-overflow-scrolling: touch) {
+  pre, .highlight {
+    overflow: visible;
+  }
+}
