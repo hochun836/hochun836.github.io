@@ -62,7 +62,8 @@ $selection-color              : white;
 }
 
 // Font families.
-$font-family-chinese      : "PingFang SC", "Microsoft YaHei";
+// $font-family-chinese      : "PingFang SC", "Microsoft YaHei";
+$font-family-chinese      : "Microsoft JhengHei", "Microsoft YaHei", "PingFang SC";
 
 $font-family-base         : $font-family-chinese, sans-serif;
 $font-family-base         : if(get_font_family('global'), (get_font_family('global'), $font-family-chinese, sans-serif), $font-family-base);
