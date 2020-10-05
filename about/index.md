@@ -3,9 +3,33 @@ layout: page
 type: about
 ---
 
-我是從後端慢慢走向前端的工程師，同時又是想涉略設計師的人類。
-想學的東西太多，在時間有限的情況下，只能全力以赴！
+<blockquote class="blockquote-center">沒一個努力會是白費的<br>相信著，往前走</blockquote>
 
-{{ site.google_analytics }}
+<br>
 
-{{ jekyll.environment  }}
+# 自我介紹
+
+喜歡將事情說清楚講明白，給自己一個能接受的理由
+
+<br>
+
+# 擅長技術
+
+- 前端
+1. CSS
+2. JavaScript
+3. Angular
+
+- 後端
+1. Java
+2. Python
+3. WebSocket
+
+<br>
+
+# 休閒興趣
+
+1. Coding
+1. 籃球
+2. 撞球
+3. 滑板
