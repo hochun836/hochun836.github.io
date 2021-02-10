@@ -42,6 +42,7 @@ bundle exec jekyll serve --host aaa.bbb.ccc.ddd --port xxxx
 ```
 
 start server with livereload
+
 ```sh
 bundle exec jekyll serve --livereload
 ```
