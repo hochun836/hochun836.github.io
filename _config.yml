@@ -217,8 +217,8 @@ font:
 social:
   GitHub: https://github.com/hochun836/
   Facebook: https://www.facebook.com/peter.kang.374
-  Instagram: https://www.instagram.com/hochun836/
-  FoanaScuba: http://foanascuba.com
+  #Instagram: https://www.instagram.com/hochun836/
+  #FoanaScuba: http://foanascuba.com
 
 # Social Links Icons
 # Icon Mapping:
@@ -743,3 +743,10 @@ images: assets/images
 
 # Theme version
 version: 5.1.1
+
+# Environment
+dev:
+  img: http://localhost/blog
+
+prd:
+  img: https://hochun836.com/blog
