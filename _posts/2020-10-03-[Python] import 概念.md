@@ -59,7 +59,7 @@ import .xxxModule # . 只能出現在 from 後面
 
 <br>
 
-# 範例
+# 絕對路徑
 
 有了以上的概念後，接著我們利用範例來實際操作下 (<a href="https://github.com/hochun836/python_absolute_import" target="_blank">範例下載</a>)  
 為求簡單，這邊 import 的方式都先使用絕對路徑
@@ -654,7 +654,7 @@ print(name)
 
 # 參考文章
 
-1. https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3
-2. https://carsonwah.github.io/15213187969322.html
+1. [Python 的 Import 陷阱](https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3)
+2. [理解Python的 relative 和 absolute import](https://carsonwah.github.io/15213187969322.html)
 
 <br>
