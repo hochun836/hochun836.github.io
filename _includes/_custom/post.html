@@ -1,0 +1,11 @@
+{% if jekyll.environment == 'production' %}
+{% assign img_folder = site.prd.img_folder %}
+{% endif %}
+
+{% if jekyll.environment == 'development' %}
+{% assign img_folder = site.dev.img_folder %}
+{% endif %}
+
+{% assign date = page.date | date: '%Y/%m/%d' %}
+
+{% assign img_folder = img_folder | append: '/' | append: date %}

@@ -6,8 +6,11 @@
 
 .post-body {
 
-  & a {
+  & a,
+  & a.btn,
+  & a.btn:hover {
     color: blue;
+    border-bottom-color: blue;
   }
 
   @media (max-width: 767px) {
@@ -24,9 +27,11 @@
   }
 }
 
-// TODO: for IOS bug
+// for IOS bug
 @supports (-webkit-overflow-scrolling: touch) {
-  pre, .highlight {
+
+  pre,
+  .highlight {
     overflow: visible;
   }
 }

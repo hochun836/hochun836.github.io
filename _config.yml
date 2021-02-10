@@ -247,7 +247,7 @@ toc:
   enable: true
 
   # Automatically add list number to toc.
-  number: true
+  number: false
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
@@ -746,7 +746,7 @@ version: 5.1.1
 
 # Environment
 dev:
-  img: http://localhost/blog
+  img_folder: http://localhost/blog
 
 prd:
-  img: https://hochun836.com/blog
+  img_folder: https://hochun836.com/blog
