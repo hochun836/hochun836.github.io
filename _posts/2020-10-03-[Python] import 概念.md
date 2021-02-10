@@ -654,7 +654,7 @@ print(name)
 
 # 參考文章
 
-1. [Python 的 Import 陷阱](https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3)
-2. [理解Python的 relative 和 absolute import](https://carsonwah.github.io/15213187969322.html)
+1. <a href="https://medium.com/pyladies-taiwan/python-%E7%9A%84-import-%E9%99%B7%E9%98%B1-3538e74f57e3" target="_blank">Python 的 Import 陷阱</a>
+2. <a href="https://carsonwah.github.io/15213187969322.html" target="_blank">理解Python的 relative 和 absolute import</a>
 
 <br>
