@@ -743,10 +743,3 @@ images: assets/images
 
 # Theme version
 version: 5.1.1
-
-# Environment
-dev:
-  img_folder: http://localhost/blog
-
-prd:
-  img_folder: https://hochun836.com/blog
