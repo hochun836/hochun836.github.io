@@ -9,8 +9,10 @@
   & a,
   & a.btn,
   & a.btn:hover {
-    color: blue;
-    border-bottom-color: blue;
+    &:not(.color-default) {
+      color: blue;
+      border-bottom-color: blue;
+    }
   }
 
   @media (max-width: 767px) {
@@ -39,4 +41,20 @@
 .key-point {
   font-weight: bold;
   color: red;
+}
+
+@each $var in (left, center, right) {
+  .#{$var} {
+    text-align: $var;
+  }
+}
+
+.edit-on-github {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+
+  @media (max-width: 767px) {
+    top: -50px;
+  }
 }

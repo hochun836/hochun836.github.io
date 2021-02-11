@@ -10,7 +10,17 @@
     {% assign post_class = post_class | append: ' ' | append: 'post-sticky' %}
   {% endif %}
 
-  <article class="{{ post_class }}" itemscope itemtype="http://schema.org/Article">
+  <article class="{{ post_class }}" itemscope itemtype="http://schema.org/Article" style="position: relative;">
+
+    {% unless is_index %}
+      <div class="edit-on-github">
+        <i class="fa fa-pencil"></i>
+        <a href="https://github.com/hochun836/hochun836.github.io/blob/master/{{ page.path }}" target="_blank">
+          <span>Edit on Github</span>
+        </a>
+      </div>
+    {% endunless %}
+
     <link itemprop="mainEntityOfPage" href="{{ post.url | absolute_url }}">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
