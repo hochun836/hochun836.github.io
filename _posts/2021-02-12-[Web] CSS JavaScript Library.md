@@ -12,7 +12,11 @@ tags:
 - library
 ---
 
-<blockquote class="blockquote-center">這篇文章粗略收集一些 Library<br>其中有些是我使用過的<br>之後會再個別寫成文章</blockquote>
+<blockquote class="blockquote-center">
+這篇文章粗略收集一些 Library<br>
+其中有些是我使用過的<br>
+之後會再個別寫成文章
+</blockquote>
 
 <br>
 

@@ -10,7 +10,10 @@ tags:
 - concept
 ---
 
-<blockquote class="blockquote-center">以下的測試環境<br>Python: 3.8.3</blockquote>
+<blockquote class="blockquote-center">
+以下的測試環境<br>
+Python: 3.8.3
+</blockquote>
 
 <br>
 
